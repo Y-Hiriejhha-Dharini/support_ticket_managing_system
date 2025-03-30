@@ -45,7 +45,7 @@ const AddTicket = () => {
 
         setLoading(true);
         try{
-            const response = await axios.post('http://127.0.0.1:8000/api/tickets',ticket,{
+            const response = await axios.post('http://127.0.0.1:8000/api/tickets/store',ticket,{
                 headers:{
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'

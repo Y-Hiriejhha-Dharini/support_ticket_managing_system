@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $validated_user = $request->validated();
 
-        if(!$token = Auth::attempt($validated_user)){
+        if(!$token = JWTAuth::attempt($validated_user)){
             throw ValidationException::withMessages([
                 'login'=>"credentials not matched"
             ]);
@@ -25,8 +25,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function refresh()
     {
-
+        return response()->json([
+            'token' => JWTAuth::refresh(),
+        ]);
     }
 }
